@@ -11,7 +11,7 @@ public class BookType: ObjectType<Book>
         descriptor.Name(nameof(Book));
         descriptor.Description(nameof(Book));
         descriptor
-            .Field("events")
+            .Field("bookEvents")
             .UseOffsetPaging<BookEventType>(options: new PagingOptions
             {
                 IncludeTotalCount = true
