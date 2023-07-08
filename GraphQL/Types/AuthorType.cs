@@ -1,4 +1,3 @@
-using HotChocolate.Types.Pagination;
 using ShemaBug.Entities;
 using ShemaBug.Events;
 
@@ -12,10 +11,6 @@ public class AuthorType: ObjectType<Author>
         descriptor.Description(nameof(Author));
         descriptor
             .Field("books")
-            .UseOffsetPaging<BookType>(options: new PagingOptions
-            {
-                IncludeTotalCount = true
-            })
             .Resolve((context, _) =>
             {
                 var author = context.Parent<Author>();
@@ -44,10 +39,6 @@ public class AuthorType: ObjectType<Author>
             });
         descriptor
             .Field("events")
-            .UseOffsetPaging<AuthorEventType>(options: new PagingOptions
-            {
-                IncludeTotalCount = true
-            })
             .Resolve((context, _) =>
             {
                 var author = context.Parent<Author>();
